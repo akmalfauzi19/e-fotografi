@@ -153,19 +153,18 @@ class TransactionController extends Controller
     {
         //GET DATA BERDASARKAN ID
         $items = Transaction::with('user', 'details', 'details.user')->findOrFail($id);
-        $pdf = PDF::loadView('admin.pages.print.nota', compact('items'))->setPaper('a4', 'landscape');
+        // $pdf = PDF::loadView('admin.pages.print.nota1', compact('items'))->setPaper('a4', 'landscape');
 
         // $pdf = PDF::loadview('admin.pages.print.nota1', ['items' => $items]);
-        return $pdf->download('invoice.pdf');
-        // return view('admin.pages.print.nota1')->with([
-        //     'items' => $items
-        // ]);
+        // return $pdf->download('invoice.pdf');
+        return view('admin.pages.print.nota1')->with([
+            'items' => $items
+        ]);
     }
 
     public function deleteconfirmation($id)
     {
         $items = Transaction::findOrFail($id);
-
         return view('admin.pages.transactions.showdelete')->with([
             'item' => $items
 
