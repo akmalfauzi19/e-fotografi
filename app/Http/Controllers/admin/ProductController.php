@@ -54,9 +54,9 @@ class ProductController extends Controller
         //
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
-
+        toastr()->success('add photo type data successfully');
         Product::create($data);
-        return redirect()->route('products.index')->with('success', 'Berhasil Mengisi Jenis Foto');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -100,10 +100,10 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
-
+        toastr()->info('change data successfully');
         $items = Product::findOrFail($id);
         $items->update($data);
-        return redirect()->route('products.index')->with('info', 'Data Jenis Foto Berhasil Diubah');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -117,8 +117,8 @@ class ProductController extends Controller
         $items = Product::findOrFail($id);
         $items->delete();
         ProductGallery::where('products_id', $id)->delete();
-
-        return redirect()->route('products.index')->with('success', 'Hapus Data Berhasil');
+        toastr()->info('Delete data successfully');
+        return redirect()->route('products.index');
     }
 
     public function gallery(Request $request, $id)

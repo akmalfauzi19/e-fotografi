@@ -57,7 +57,7 @@ class ProductGalleryController extends Controller
             'assets/product',
             'public'
         );
-
+        toastr()->success('added image was successful');
         ProductGallery::create($data);
         return redirect()->route('product-galleries.index')->with('success', 'Foto Berhasil DI Tambah');
     }
@@ -108,6 +108,8 @@ class ProductGalleryController extends Controller
      */
     public function destroy($id)
     {
+
+        toastr()->info('Delete images successfully');
         $items = ProductGallery::findOrFail($id);
         $items->delete();
         return redirect()->route('product-galleries.index')->with('success', 'Hapus Data Berhasil');

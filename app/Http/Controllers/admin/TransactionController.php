@@ -101,11 +101,11 @@ class TransactionController extends Controller
         ]);
 
         $data = $request->all();
-
+        toastr()->info('change data transaction successfully');
         $items = Transaction::findOrFail($id);
         $items->update($data);
 
-        return redirect()->route('transactions.index')->with('info', 'Data Berhasil Diubah');
+        return redirect()->route('transactions.index');
     }
 
     /**
@@ -119,8 +119,8 @@ class TransactionController extends Controller
         $items = Transaction::findOrFail($id);
         $items->delete();
         TransactionDetail::where('transaction_id', $id)->delete();
-
-        return redirect()->route('transactions.index')->with('success', 'Hapus Data Transaksi Berhasil');
+        toastr()->info('Delete data transaction successfully');
+        return redirect()->route('transactions.index');
     }
 
     public function setStatus(Request $request, $id)
@@ -136,9 +136,9 @@ class TransactionController extends Controller
             Mail::to($items->email)->send(new SendMail($items));
         else if ($request->status == 'FAILED')
             Mail::to($items->email)->send(new SendMailFailed($items));
-
+        toastr()->info('change status transaction successfully');
         $items->save();
-        return redirect()->route('transactions.index')->with('success', 'status berhasil diubah');
+        return redirect()->route('transactions.index');
     }
 
     public function print_pdf()
@@ -153,13 +153,13 @@ class TransactionController extends Controller
     {
         //GET DATA BERDASARKAN ID
         $items = Transaction::with('user', 'details', 'details.user')->findOrFail($id);
-        // $pdf = PDF::loadView('admin.pages.print.nota', compact('items'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('admin.pages.print.nota', compact('items'))->setPaper('a4', 'landscape');
 
         // $pdf = PDF::loadview('admin.pages.print.nota1', ['items' => $items]);
-        // return $pdf->download('invoice.pdf');
-        return view('admin.pages.print.nota1')->with([
-            'items' => $items
-        ]);
+        return $pdf->download('invoice.pdf');
+        // return view('admin.pages.print.nota1')->with([
+        //     'items' => $items
+        // ]);
     }
 
     public function deleteconfirmation($id)

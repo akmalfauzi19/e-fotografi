@@ -94,7 +94,7 @@ class AboutUserController extends Controller
         $items->delete();
         TransactionDetail::where('user_id', $id)->delete();
         Transaction::where('user_id', $id)->delete();
-
+        toastr()->info('Delete user account successfully');
         return redirect()->route('user-accounts.index')->with('success', 'Berhasil Menghapus Data Akun');
     }
 }

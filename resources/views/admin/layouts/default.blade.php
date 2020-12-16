@@ -12,7 +12,7 @@
     <title>Halaman Admin Aristo Fotografi</title>
     <meta name="description" content="Aristo Fotografi">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    @toastr_css
     {{-- style --}}
     @stack('before-style')
     @include('admin.includes.style')
@@ -34,7 +34,6 @@
 
         <!-- Content -->
         <div class="content">
-            @include('layouts.flash-message')
             {{-- content --}}
             @yield('content')
             {{-- content --}}
@@ -63,5 +62,8 @@
     @stack('after-script')
 
 </body>
+@jquery
+@toastr_js
+@toastr_render
 
 </html>
