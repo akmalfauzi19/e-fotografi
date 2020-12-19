@@ -10,6 +10,7 @@ use PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use App\Mail\SendMailFailed;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -141,13 +142,21 @@ class TransactionController extends Controller
         return redirect()->route('transactions.index');
     }
 
-    public function print_pdf()
+    public function print_pdf(Request $request)
     {
-        $items = Transaction::all();
-
+        $start = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
+        $end = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
+        if (request()->date != '') {
+            //MAKA FORMATTING TANGGALNYA BERDASARKAN FILTER USER
+            $date = explode(' - ', request()->date);
+            $start = Carbon::parse($date[0])->format('Y-m-d');
+            $end = Carbon::parse($date[1])->format('Y-m-d');
+        }
+        $items = Transaction::whereBetween('date', [$start, $end])->get();
         $pdf = PDF::loadview('admin.pages.print.report-transactions', ['items' => $items]);
-        return $pdf->download('laporan-transaksi.pdf');
+        return $pdf->download('Laporan Pemesanan.pdf');
     }
+
 
     public function generateInvoice($id)
     {

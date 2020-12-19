@@ -1,7 +1,18 @@
 @extends('admin.layouts.default')
 
 @section('content')
+    <form action="{{ route('print.laporan') }}" method="GET">
+        <div class="input-group mb-3 col-md-4 float-right">
+            <input type="input" name="date" id="dates" class="form-control">
+            <div class="input-group-append">
+                <button class="btn btn-warning" type="submit">
+                    <i class="fa fa-print"></i>
+                    Cetak
+                </button>
+            </div>
 
+        </div>
+    </form>
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
@@ -11,12 +22,7 @@
                             <strong class="card-title">Daftar Transaksi Masuk</strong>
                         </div>
                         <div class="card-body">
-                            <div class="text-right">
-                                <a href="{{ route('print.laporan') }}" class="btn btn-primary btn-sm" target="_blank">
-                                    <i class="fa fa-print">
-                                        Cetak Laporan</i>
-                                </a>
-                            </div>
+
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead class="thead-dark">
                                     <tr>
@@ -162,7 +168,19 @@
     <script src="{{ asset('admin/assets/js/lib/data-table/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/init/datatables-init.js') }}"></script>
 
+    {{-- date pciker --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $('input[id="dates"]').daterangepicker();
 
+    </script>
 
+@endpush
+
+@push('after-style')
+    {{-- date pciker --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 @endpush

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Hasil Laporan Transaksi</title>
+    <title>Hasil Laporan Pemesanan</title>
     <link rel="stylesheet" href="{{ public_path('admin/assets/css/bootstrap.min.css') }}"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -16,7 +16,7 @@
 
     </style>
     <center>
-        <h5>Laporan Transaksi Aristo Fotorgrafi</h5>
+        <h5>Laporan Pemesanan Aristo Fotorgrafi</h5>
     </center>
 
     <table class='table table-bordered' style="border: 5px;">
