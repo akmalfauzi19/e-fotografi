@@ -14,6 +14,10 @@
                 <li class="{{ Route::currentRouteNamed('products.create') ? 'active' : '' }}">
                     <a href="{{ route('products.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Jenis Foto</a>
                 </li>
+                <li class="{{ Route::currentRouteNamed('products.restored') ? 'active' : '' }}">
+                    <a href="{{ route('products.restored') }}"> <i class="menu-icon fa fa-trash "></i>Restored Jenis
+                        Foto</a>
+                </li>
 
                 <li class="menu-title">Galleri</li><!-- /.menu-title -->
                 <li class="{{ Route::currentRouteNamed('product-galleries.index') ? 'active' : '' }}">
@@ -24,12 +28,21 @@
                     <a href="{{ route('product-galleries.create') }}"> <i class="menu-icon fa  fa-picture-o"></i>Tambah
                         Foto</a>
                 </li>
+                <li class="{{ Route::currentRouteNamed('product-galleries.restored') ? 'active' : '' }}">
+                    <a href="{{ route('product-galleries.restored') }}"> <i class="menu-icon fa fa-trash "></i>Restored
+                        Foto</a>
+                </li>
 
                 <li class="menu-title">Transaksi</li><!-- /.menu-title -->
                 <li class="{{ Route::currentRouteNamed('transactions.index') ? 'active' : '' }}">
                     <a href="{{ route('transactions.index') }}"> <i class="menu-icon fa fa-money"></i>Lihat
                         Transaksi</a>
                 </li>
+                <li class="{{ Route::currentRouteNamed('transactions.restored') ? 'active' : '' }}">
+                    <a href="{{ route('transactions.restored') }}"> <i class="menu-icon fa fa-trash "></i>Restored
+                        Foto</a>
+                </li>
+
                 <li class="menu-title">Halaman User</li><!-- /.menu-title -->
                 <li class="{{ Route::currentRouteNamed('admin.user') ? 'active' : '' }}">
                     <a href="{{ route('admin.user') }}"><i class="menu-icon fa fa-user"></i>Kelola User</a>

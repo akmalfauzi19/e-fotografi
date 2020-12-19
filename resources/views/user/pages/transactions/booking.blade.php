@@ -245,7 +245,7 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="aa-checkout-single-bill">
-                                                                        <input type="number" name="number"
+                                                                        <input type="tel" name="number" id="cc"
                                                                             placeholder="Nomor Hp/wa"
                                                                             class="@error('number') is-invalid @enderror">
                                                                         <small>Format: 086445607890</small><br>
@@ -301,3 +301,10 @@
     @endguest
 
 @endsection
+
+@push('after-style')
+    <script>
+        $('#cc').inputmask("9999 9999 9999")
+
+    </script>
+@endpush

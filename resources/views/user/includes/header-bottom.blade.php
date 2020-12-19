@@ -17,6 +17,7 @@
                         <!-- search box -->
                         <div class="aa-search-box">
                             <form action="{{ route('user.search') }}">
+                                @csrf
                                 <input type="text" name="cari" placeholder="Search Jenis Foto... "
                                     value="{{ old('cari') }}">
                                 <button type="submit"><span class="fa fa-search"></span></button>

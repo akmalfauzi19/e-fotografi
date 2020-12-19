@@ -72,9 +72,6 @@
                                             </h3>
 
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi,
-                                            veritatis quae
-                                            repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
                                         <div class="aa-prod-quantity">
                                             <p class="aa-prod-category">
                                                 Category: <a href="#">{{ $item->product->type }}</a>

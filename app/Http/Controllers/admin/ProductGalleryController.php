@@ -114,4 +114,24 @@ class ProductGalleryController extends Controller
         $items->delete();
         return redirect()->route('product-galleries.index')->with('success', 'Hapus Data Berhasil');
     }
+
+       public function restored(Request $request)
+       {
+            $number = 1;
+
+            $items = ProductGallery::onlyTrashed()->take(8)->get();
+
+            return view('admin.pages.product-galleries.restored')->with([
+            'items' => $items,
+            'number' => $number
+            ]);
+       }
+
+       public function setRestored(Request $request, $id)
+       {
+            ProductGallery::withTrashed()->find($id)->restore();
+
+            toastr()->success('restored data successfully');
+            return redirect()->route('product-galleries.restored');
+       }
 }

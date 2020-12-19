@@ -26,6 +26,23 @@ Auth::routes(['verify' => true]);
 
 //admin
 Route::get('products/{id}/gallery', 'admin\ProductController@gallery')->name('products.gallery')->middleware('is_admin');
+Route::get('products/restored',
+'admin\ProductController@restored')->name('products.restored')->middleware('is_admin');
+Route::get('products/{id}/set-restored',
+'admin\ProductController@setRestored')->name('products.setrestored')->middleware('is_admin');
+
+Route::get('gallery/restored',
+'admin\ProductGalleryController@restored')->name('product-galleries.restored')->middleware('is_admin');
+Route::get('products/{id}/set-restored/gallery',
+'admin\ProductGalleryController@setRestored')->name('product-galleries.setrestored')->middleware('is_admin');
+
+
+Route::get('transaction/restored',
+'admin\TransactionController@restored')->name('transactions.restored')->middleware('is_admin');
+Route::get('transaction/{id}/set-restored/transaction',
+'admin\TransactionController@setRestored')->name('transactions.setrestored')->middleware('is_admin');
+
+
 Route::get('transactions/{id}/set-status', 'admin\TransactionController@setStatus')->name('transactions.status')->middleware('is_admin');;
 Route::get('transactions/{id}/delete', 'admin\TransactionController@deleteconfirmation')->name('transactions.showdelete')->middleware('is_admin');;
 Route::get('/admin/home', 'admin\DashboardController@index')->name('admin.home')->middleware('is_admin');

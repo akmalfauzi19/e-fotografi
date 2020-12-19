@@ -31,7 +31,7 @@ class TransactionRequest extends FormRequest
             'email' => 'required',
             'address' => 'required',
             'date' => 'required|date|after:tomorrow|unique:transactions',
-            'number' => 'required',
+            'number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:12',
             'transaction_price' => 'required|integer',
             'transaction_status' => 'required'
         ];

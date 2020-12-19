@@ -134,6 +134,28 @@ class ProductController extends Controller
             ]);
     }
 
+     public function restored(Request $request)
+     {
+        $number = 1;
+
+        $items = Product::onlyTrashed()->take(8)->get();
+
+        return view('admin.pages.product.restored')->with([
+            'items' => $items,
+            'number' => $number
+        ]);
+     }
+
+     public function setRestored(Request $request, $id)
+     {
+
+        // $items = Product::onlyTrashed()->findOrFail($id)->restore();
+        Product::withTrashed()->find($id)->restore();
+
+        toastr()->success('restored data successfully');
+        return redirect()->route('products.restored');
+     }
+
     // jika ingin menggunakan ajax live search
     // public function live_search(Request $request)
     // {
