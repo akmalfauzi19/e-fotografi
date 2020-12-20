@@ -37,7 +37,7 @@
                               @if (Auth::user()->is_admin == 1)
 
                               @else
-                                  <li><a href="{{ route('user.status.login', Auth::user()->id) }}">My Transaction</a></li>
+                                  <li><a href="{{ route('user.status.login', Auth::user()->email) }}">My Transaction</a></li>
                               @endif
                           @else
                               <li><a href="{{ route('user.status') }}">My Transaction</a></li>

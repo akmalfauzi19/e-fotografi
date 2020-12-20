@@ -65,7 +65,7 @@ Route::get('/details/{id}/checkout-guest/', 'user\DashboardController@booking')-
 
 Route::get('/details/{id}/checkout/', 'user\TransactionController@index')->name('user.booking');
 Route::get('/mytransaction', 'user\DashboardController@cekStatus')->name('user.status');
-Route::get('/mytransaction/{id}', 'user\TransactionController@cekStatusLogin')->name('user.status.login');
+Route::get('/mytransaction/{email}', 'user\TransactionController@cekStatusLogin')->name('user.status.login');
 Route::get('/contact', 'user\DashboardController@contact')->name('user.contact');
 Route::get('/portofolio', 'user\DashboardController@portofolio')->name('user.portofolio');
 Route::get('/search', 'user\DashboardController@Search')->name('user.search');
