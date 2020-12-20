@@ -120,7 +120,6 @@ class TransactionController extends Controller
     public function cekStatusLogin($email)
     {
         $items = Transaction::where('email', $email)->orderBy('created_at', 'ASC')->get();
-        // $items = Transaction::with('user', 'details', 'details.user')->orderBy('id', 'DESC')->where('user_id', $id)->get();
         $menu = ProductGallery::with('product')->get();
 
         return view('user.pages.transactions.cekstatuslogin')
@@ -128,6 +127,5 @@ class TransactionController extends Controller
                 'items' => $items,
                 'menu' => $menu
             ]);
-        // return view('user.pages.transactions.cekstatus');
     }
 }
