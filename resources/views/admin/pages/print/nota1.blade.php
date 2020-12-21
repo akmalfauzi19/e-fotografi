@@ -132,7 +132,7 @@
                                 Gg. 18, Tirto, Kec. Pekalongan Barat, <br>
                                 Kota Pekalongan, Jawa Tengah 51151<br>
                                 085343966997<br>
-                                aristo@gmail.com
+                                Aristofotografi7@gmail.com
                             </td>
 
                             <td>

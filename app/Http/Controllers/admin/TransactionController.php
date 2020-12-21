@@ -180,8 +180,8 @@ class TransactionController extends Controller
         ]);
     }
 
-     public function restored(Request $request)
-     {
+    public function restored(Request $request)
+    {
         $number = 1;
 
         $items = Transaction::onlyTrashed()->take(8)->get();
@@ -190,13 +190,13 @@ class TransactionController extends Controller
             'items' => $items,
             'number' => $number
         ]);
-     }
+    }
 
-     public function setRestored(Request $request, $id)
-     {
+    public function setRestored(Request $request, $id)
+    {
         Transaction::withTrashed()->find($id)->restore();
         TransactionDetail::where('transaction_id', $id)->withTrashed()->restore();
         toastr()->success('restored data successfully');
         return redirect()->route('transactions.restored');
-     }
+    }
 }
