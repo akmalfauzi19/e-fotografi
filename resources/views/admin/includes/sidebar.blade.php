@@ -40,7 +40,7 @@
                 </li>
                 <li class="{{ Route::currentRouteNamed('transactions.restored') ? 'active' : '' }}">
                     <a href="{{ route('transactions.restored') }}"> <i class="menu-icon fa fa-trash "></i>Restored
-                        Foto</a>
+                        Transaksi</a>
                 </li>
 
                 <li class="menu-title">Halaman User</li><!-- /.menu-title -->
