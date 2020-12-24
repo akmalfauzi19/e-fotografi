@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aristo Fotografi</title>
-    @toastr_css
+
     {{-- style --}}
     @stack('before-style')
     @include('user.includes.style')
     @stack('after-style')
     {{-- end style --}}
+    @toastr_css
 
 </head>
 
@@ -63,7 +64,7 @@
     {{-- end script bottom --}}
 
 </body>
-@jquery
+{{-- @jquery --}}
 @toastr_js
 @toastr_render
 
