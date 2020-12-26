@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Transaction;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class TransactionAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +24,15 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('product');
+        $id = $this->route('transaction');
         return [
-            'name' => 'required|max:255|unique:products,name,' . $id,
-            'type' => 'required|max:255',
-            'description' => 'required',
-            'price' => 'required|integer'
+            'name' => 'required|max:255',
+            'number' => 'required',
+            'date' => 'required|date|unique:transactions,date,' . $id,
+            'transaction_price' => 'required|integer',
         ];
     }
+
     public function withValidator($validator)
     {
         $messages = $validator->messages();

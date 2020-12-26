@@ -67,9 +67,9 @@ class TransactionController extends Controller
         $data1['product_id'] = Str::slug($transaction->product_id);
         $data1['user_id'] = Str::slug($transaction->user_id);
         TransactionDetail::create($data1);
-        $userid = Auth::user()->id;
+        $email = Auth::user()->email;
 
-        return redirect()->route('user.status.login', $userid)->with('success', 'Pesanan berhasil dan Tunggu Notifikasi Email Dari Kami');
+        return redirect()->route('user.status.login', $email)->with('success', 'Pesanan berhasil dan Tunggu Notifikasi Email Dari Kami');
     }
 
     /**

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMail;
 use App\Mail\SendMailFailed;
 use Carbon\Carbon;
+use App\Http\Requests\TransactionAdminRequest;
 
 class TransactionController extends Controller
 {
@@ -91,15 +92,8 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TransactionAdminRequest $request, $id)
     {
-
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'date' => 'required|date|unique:transactions',
-            'number' => 'required',
-            'transaction_price' => 'required|integer'
-        ]);
 
         $data = $request->all();
         toastr()->info('change data transaction successfully');
@@ -108,6 +102,7 @@ class TransactionController extends Controller
 
         return redirect()->route('transactions.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

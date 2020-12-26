@@ -59,7 +59,7 @@ class ProductGalleryController extends Controller
         );
         toastr()->success('added image was successful');
         ProductGallery::create($data);
-        return redirect()->route('product-galleries.index')->with('success', 'Foto Berhasil DI Tambah');
+        return redirect()->route('product-galleries.index');
     }
 
     /**
@@ -115,23 +115,23 @@ class ProductGalleryController extends Controller
         return redirect()->route('product-galleries.index')->with('success', 'Hapus Data Berhasil');
     }
 
-       public function restored(Request $request)
-       {
-            $number = 1;
+    public function restored(Request $request)
+    {
+        $number = 1;
 
-            $items = ProductGallery::onlyTrashed()->take(8)->get();
+        $items = ProductGallery::onlyTrashed()->take(8)->get();
 
-            return view('admin.pages.product-galleries.restored')->with([
+        return view('admin.pages.product-galleries.restored')->with([
             'items' => $items,
             'number' => $number
-            ]);
-       }
+        ]);
+    }
 
-       public function setRestored(Request $request, $id)
-       {
-            ProductGallery::withTrashed()->find($id)->restore();
+    public function setRestored(Request $request, $id)
+    {
+        ProductGallery::withTrashed()->find($id)->restore();
 
-            toastr()->success('restored data successfully');
-            return redirect()->route('product-galleries.restored');
-       }
+        toastr()->success('restored data successfully');
+        return redirect()->route('product-galleries.restored');
+    }
 }

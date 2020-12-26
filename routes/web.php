@@ -2,7 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,33 +14,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 
-// Auth::routes();
 Auth::routes(['verify' => true]);
-// Route::get('/home1', 'HomeController@index')->name('home');
-// Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
 //admin
 Route::get('products/{id}/gallery', 'admin\ProductController@gallery')->name('products.gallery')->middleware('is_admin');
-Route::get('products/restored',
-'admin\ProductController@restored')->name('products.restored')->middleware('is_admin');
-Route::get('products/{id}/set-restored',
-'admin\ProductController@setRestored')->name('products.setrestored')->middleware('is_admin');
+Route::get(
+    'products/restored',
+    'admin\ProductController@restored'
+)->name('products.restored')->middleware('is_admin');
+Route::get(
+    'products/{id}/set-restored',
+    'admin\ProductController@setRestored'
+)->name('products.setrestored')->middleware('is_admin');
 
-Route::get('gallery/restored',
-'admin\ProductGalleryController@restored')->name('product-galleries.restored')->middleware('is_admin');
-Route::get('products/{id}/set-restored/gallery',
-'admin\ProductGalleryController@setRestored')->name('product-galleries.setrestored')->middleware('is_admin');
+Route::get(
+    'gallery/restored',
+    'admin\ProductGalleryController@restored'
+)->name('product-galleries.restored')->middleware('is_admin');
+Route::get(
+    'products/{id}/set-restored/gallery',
+    'admin\ProductGalleryController@setRestored'
+)->name('product-galleries.setrestored')->middleware('is_admin');
 
 
-Route::get('transaction/restored',
-'admin\TransactionController@restored')->name('transactions.restored')->middleware('is_admin');
-Route::get('transaction/{id}/set-restored/transaction',
-'admin\TransactionController@setRestored')->name('transactions.setrestored')->middleware('is_admin');
+Route::get(
+    'transaction/restored',
+    'admin\TransactionController@restored'
+)->name('transactions.restored')->middleware('is_admin');
+Route::get(
+    'transaction/{id}/set-restored/transaction',
+    'admin\TransactionController@setRestored'
+)->name('transactions.setrestored')->middleware('is_admin');
 
 
 Route::get('transactions/{id}/set-status', 'admin\TransactionController@setStatus')->name('transactions.status')->middleware('is_admin');;
