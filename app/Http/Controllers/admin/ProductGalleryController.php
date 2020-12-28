@@ -119,7 +119,7 @@ class ProductGalleryController extends Controller
     {
         $number = 1;
 
-        $items = ProductGallery::onlyTrashed()->take(8)->get();
+        $items = ProductGallery::onlyTrashed()->orderBy('id', 'DESC')->take(8)->get();
 
         return view('admin.pages.product-galleries.restored')->with([
             'items' => $items,

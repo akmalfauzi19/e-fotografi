@@ -138,7 +138,7 @@ class ProductController extends Controller
     {
         $number = 1;
 
-        $items = Product::onlyTrashed()->take(8)->get();
+        $items = Product::onlyTrashed()->orderBy('id', 'DESC')->take(8)->get();
 
         return view('admin.pages.product.restored')->with([
             'items' => $items,

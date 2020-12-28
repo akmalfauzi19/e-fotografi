@@ -178,8 +178,7 @@ class TransactionController extends Controller
     public function restored(Request $request)
     {
         $number = 1;
-
-        $items = Transaction::onlyTrashed()->take(8)->get();
+        $items = Transaction::onlyTrashed()->orderBy('id', 'DESC')->take(8)->get();
 
         return view('admin.pages.transactions.restored')->with([
             'items' => $items,

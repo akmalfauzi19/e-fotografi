@@ -29,8 +29,6 @@ class DashboardController extends Controller
             'success' => Transaction::where('transaction_status', 'SUCCESS')->count(),
         ];
 
-
-
         return view('admin.pages.dashboard')->with([
             'number' => $number++,
             'income' => $income,

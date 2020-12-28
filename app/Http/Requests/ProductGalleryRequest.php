@@ -26,7 +26,7 @@ class ProductGalleryRequest extends FormRequest
         return [
             'products_id' => 'required|integer|exists:products,id',
             'photo' => 'required|image',
-            'is_default' => 'boolean'
+            'is_default' => 'boolean|required'
         ];
     }
     public function withValidator($validator)
