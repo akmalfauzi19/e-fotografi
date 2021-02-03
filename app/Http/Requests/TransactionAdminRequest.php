@@ -28,7 +28,7 @@ class TransactionAdminRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'number' => 'required',
-            'date' => 'required|date|unique:transactions,date,' . $id,
+            'date' => 'required|date|unique:transactions,date,' . $id . ',id,deleted_at,NULL',
             'transaction_price' => 'required|integer',
         ];
     }

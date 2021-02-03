@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         $id = $this->route('product');
         return [
-            'name' => 'required|max:255|unique:products,name,' . $id,
+            'name' => 'required|max:255|unique:products,name,' . $id . ',id,deleted_at,NULL',
             'type' => 'required|max:255',
             'description' => 'required',
             'price' => 'required|integer'
