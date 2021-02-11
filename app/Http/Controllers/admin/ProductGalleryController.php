@@ -59,7 +59,7 @@ class ProductGalleryController extends Controller
         );
         toastr()->success('added image was successful');
         ProductGallery::create($data);
-        return redirect()->route('product-galleries.index');
+        return redirect()->route('product-galleries.create');
     }
 
     /**

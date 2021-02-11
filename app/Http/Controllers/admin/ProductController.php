@@ -56,7 +56,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($request->name);
         toastr()->success('add photo type data successfully');
         Product::create($data);
-        return redirect()->route('products.index');
+        return redirect()->route('products.create');
     }
 
     /**
