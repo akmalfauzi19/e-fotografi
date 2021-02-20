@@ -24,7 +24,7 @@
         <h5>Laporan Pemesanan Aristo Fotorgrafi</h5>
     </center>
     <div style="margin-left:20px">
-        <p>Cetak dari tanggal : {{ date('d-m-Y', strtotime($start)) }} sampai {{ date('d-m-Y', strtotime($end)) }}
+        <p>Cetak dari tanggal : {{ date('d-m-Y', strtotime($start)) }} - {{ date('d-m-Y', strtotime($end)) }}
         </p>
     </div>
 
