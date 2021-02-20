@@ -139,6 +139,7 @@ class TransactionController extends Controller
 
     public function print_pdf(Request $request)
     {
+        $datenow = Carbon::now()->format('d-m-Y');
         $start = Carbon::now()->startOfMonth()->format('Y-m-d H:i:s');
         $end = Carbon::now()->endOfMonth()->format('Y-m-d H:i:s');
         if (request()->date != '') {
@@ -147,8 +148,14 @@ class TransactionController extends Controller
             $start = Carbon::parse($date[0])->format('Y-m-d');
             $end = Carbon::parse($date[1])->format('Y-m-d');
         }
+
         $items = Transaction::whereBetween('date', [$start, $end])->get();
-        $pdf = PDF::loadview('admin.pages.print.report-transactions', ['items' => $items]);
+        $pdf = PDF::loadview('admin.pages.print.report-transactions', [
+            'items' => $items,
+            'datenow' => $datenow,
+            'start' => $start,
+            'end' => $end
+        ]);
         return $pdf->download('Laporan Pemesanan.pdf');
     }
 

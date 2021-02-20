@@ -14,16 +14,24 @@
             font-size: 10pt;
         }
 
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12px;
+        }
+
     </style>
     <center>
         <h5>Laporan Pemesanan Aristo Fotorgrafi</h5>
     </center>
+    <div style="margin-left:20px">
+        <p>Tanggal Cetak : {{ date('d-m-Y', strtotime($start)) }} - {{ date('d-m-Y', strtotime($end)) }}</p>
+    </div>
 
     <table class='table table-bordered' style="border: 5px;">
-        <thead>
+        <thead style="text-center">
             <tr>
                 <th>No</th>
-                <th>Kode Transaksi</th>
+                {{-- <th>Kode Transaksi</th> --}}
                 <th>Nama</th>
                 <th>Nomor</th>
                 <th>Tanggal Sesi Foto</th>
@@ -36,10 +44,10 @@
             @forelse ($items as $item)
                 <tr>
                     <td>{{ $i++ }}</td>
-                    <td>{{ $item->uuid }}</td>
+                    {{-- <td>{{ $item->uuid }}</td> --}}
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->number }}</td>
-                    <td>{{ $item->date }}</td>
+                    <td> {{ date('d-m-Y', strtotime($item->date)) }}</td>
                     <td>Rp. @currency($item->transaction_price)</td>
                     <td>
                         @if ($item->transaction_status == 'PENDING')
@@ -70,6 +78,17 @@
             @endforelse
         </tbody>
     </table>
+
+    <div style="float: right; margin-right:20px">
+        <p>Pekalongan, {{ $datenow }}</p>
+        <p>Pemilik Aristo Fotografi</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>Mukhamad Aristo</p>
+    </div>
+    <div style="clear:both"></div>
 
 </body>
 
