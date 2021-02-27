@@ -55,7 +55,7 @@ class LoginController extends Controller
                 return redirect()->route('user.home');
             }
         } else {
-            toastr()->error('Email-Address And Password Are Wrong.');
+            toastr()->error('Alamat Email Dan Kata Sandi Salah.');
             return redirect()->route('login');
         }
     }
