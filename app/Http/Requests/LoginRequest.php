@@ -28,6 +28,15 @@ class LoginRequest extends FormRequest
             'password' => 'required',
         ];
     }
+    public function messages()
+    {
+        return [
+            'email.required' => 'Field email Masih Kosong',
+            'email.email' => 'Isikan Sesuai Format Email',
+            'email.exists' => 'Email Anda Tidak Terdaftar',
+            'password.required' => 'Field Password Masih Kosong',
+        ];
+    }
 
     public function withValidator($validator)
     {

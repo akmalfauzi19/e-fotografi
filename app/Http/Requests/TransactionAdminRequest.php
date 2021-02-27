@@ -33,6 +33,19 @@ class TransactionAdminRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'name.required' => 'Field Nama Masih Kosong',
+            'name.max' => 'Melebihi Batas Karakter',
+            'number.required' => 'Field Nomor HP Masih Kosong',
+            'date.required' => 'Field Gambar Masih Kosong',
+            'date.date' => 'Data Harus Berformat Tanggal',
+            'date.unique' => 'Tanggal Sudah Dipilih',
+            'transaction_price.required' => 'Field Harga Masih Kosong'
+        ];
+    }
+
     public function withValidator($validator)
     {
         $messages = $validator->messages();

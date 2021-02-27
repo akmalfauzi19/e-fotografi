@@ -36,4 +36,25 @@ class TransactionRequest extends FormRequest
             'transaction_status' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'product_id.required' => 'Field Id Produk Masih Kosong',
+            'product_id.integer' => 'Field Id Produk Harus Angka',
+            'user_id.required' => 'Field User id Masih Kosong',
+            'user_id.integer' => 'Field User id Harus Angka',
+            'uuid.required' => 'Field Kode Transaksi Masih Kosong',
+            'name.required' => 'Field Nama Masih Kosong',
+            'email.required' => 'Field Email Masih Kosong',
+            'address.required' => 'Field Alamat Masih Kosong',
+            'date.required' => 'Field Tanggal Masih Kosong',
+            'date.date' => 'Data Harus Berformat Tanggal',
+            'date.unique' => 'Tanggal Sudah Dipilih',
+            'number.required' => 'Field Nomor Hp Masih Kosong',
+            'number.min' => 'Nomor Minimal 12 Angka',
+            'transaction_price.required' => 'Field Harga Masih Kosong',
+            'transaction_price.integer' => 'Harga Berformat Angka'
+        ];
+    }
 }

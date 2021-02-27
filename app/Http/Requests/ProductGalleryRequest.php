@@ -29,6 +29,19 @@ class ProductGalleryRequest extends FormRequest
             'is_default' => 'boolean|required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'products_id.required' => 'Field Id Produk Masih Kosong',
+            'products_id.integer' => 'Id Produk Harus Angka',
+            'photo.required' => 'Field Gambar Masih Kosong',
+            'photo.image' => 'Data Harus Berupa Gambar',
+            'is_default.required' => 'Field Gambar Utama Masih Kosong',
+            'is_default.boolean' => 'Harus Pilih Ya Atau Tidak'
+        ];
+    }
+
     public function withValidator($validator)
     {
         $messages = $validator->messages();
