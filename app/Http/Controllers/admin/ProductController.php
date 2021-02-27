@@ -100,7 +100,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
-        toastr()->info('change data successfully');
+        toastr()->info('Mengubah data dengan sukses');
         $items = Product::findOrFail($id);
         $items->update($data);
         return redirect()->route('products.index');
@@ -117,7 +117,7 @@ class ProductController extends Controller
         $items = Product::findOrFail($id);
         $items->delete();
         ProductGallery::where('products_id', $id)->delete();
-        toastr()->info('Delete data successfully');
+        toastr()->info('Menghapus data sukses');
         return redirect()->route('products.index');
     }
 
@@ -151,68 +151,7 @@ class ProductController extends Controller
 
         Product::withTrashed()->find($id)->restore();
 
-        toastr()->success('restored data successfully');
+        toastr()->success('Pengembalian data sukses');
         return redirect()->route('products.restored');
     }
-
-    // jika ingin menggunakan ajax live search
-    // public function live_search(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $output = '';
-    //         $query = $request->get('query');
-    //         if ($query != '') {
-    //             $data = Product::where('name', 'like', '%' . $query . '%')
-    //                 ->orWhere('type', 'like', '%' . $query . '%')
-    //                 ->orWhere('price', 'like', '%' . $query . '%')
-    //                 ->orderBy('id', 'asc')
-    //                 ->get();
-    //         } else {
-    //             $data = Product::orderBy('id', 'asc')
-    //                 ->get();
-    //         }
-    //         $total_row = $data->count();
-    //         if ($total_row > 0) {
-    //             $number = 1;
-    //             foreach ($data as $item) {
-    //                 $output .= '
-    //                   <tr >
-    //                     <td>' . $number++ . '</td>
-    //                     <td>' . $item->name . '</td>
-    //                     <td>' . $item->type . '</td>
-    //                     <td>Rp. ' . number_format($item->price, 0, ',', '.') . ' </td>
-    //                     <td class="text-center">
-    //                       <a href="' . route('products.gallery', $item->id) . '"
-    //                      class="btn btn-info btn-sm">
-    //                      <i class="fa fa-picture-o"></i>
-    //                      </a>
-    //                      <a href="' . route('products.edit', $item->id) . '"
-    //                      class="btn btn-primary btn-sm">
-    //                      <i class="fa fa-pencil  "></i>
-    //                      </a>
-    //                     <a href="#mymodal" data-remote="' . route('products.show', $item->id) . '"
-    //                      data-toggle="modal" data-target="#mymodal"
-    //                       data-title="DELETE CONFIRMATION!!!" class="btn btn-danger btn-sm">
-    //                      <i class="fa fa-trash "></i>
-    //                      </a>
-    //                     </td>
-    //                   </tr>
-    //                 ';
-    //             }
-    //         } else {
-    //             $output = '
-    //               <tr>
-    //                <td colspan="6" class="text-center">
-    //                 Data yang dicari tidak ditemukan
-    //                </td>
-    //               </tr>
-    //            ';
-    //         }
-
-    //         $data = array(
-    //             'table_data'  => $output
-    //         );
-    //         echo json_encode($data);
-    //     }
-    // }
 }

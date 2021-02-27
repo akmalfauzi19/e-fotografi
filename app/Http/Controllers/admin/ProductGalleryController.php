@@ -57,7 +57,7 @@ class ProductGalleryController extends Controller
             'assets/product',
             'public'
         );
-        toastr()->success('added image was successful');
+        toastr()->success('Menambahkan Gambar Berhasil');
         ProductGallery::create($data);
         return redirect()->route('product-galleries.create');
     }
@@ -131,7 +131,7 @@ class ProductGalleryController extends Controller
     {
         ProductGallery::withTrashed()->find($id)->restore();
 
-        toastr()->success('restored data successfully');
+        toastr()->success('Pengembalian data sukses');
         return redirect()->route('product-galleries.restored');
     }
 }

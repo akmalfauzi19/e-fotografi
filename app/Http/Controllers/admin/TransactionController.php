@@ -96,7 +96,7 @@ class TransactionController extends Controller
     {
 
         $data = $request->all();
-        toastr()->info('change data transaction successfully');
+        toastr()->info('Mengubah Data Transaksi Berhasil');
         $items = Transaction::findOrFail($id);
         $items->update($data);
 
@@ -115,7 +115,7 @@ class TransactionController extends Controller
         $items = Transaction::findOrFail($id);
         $items->delete();
         TransactionDetail::where('transaction_id', $id)->delete();
-        toastr()->info('Delete data transaction successfully');
+        toastr()->info('Hapus Data Transaksi Berhasil');
         return redirect()->route('transactions.index');
     }
 
@@ -132,7 +132,7 @@ class TransactionController extends Controller
             Mail::to($items->email)->send(new SendMail($items));
         else if ($request->status == 'FAILED')
             Mail::to($items->email)->send(new SendMailFailed($items));
-        toastr()->info('change status transaction successfully');
+        toastr()->info('Mengubah Status Transaksi Berhasil');
         $items->save();
         return redirect()->route('transactions.index');
     }
@@ -197,7 +197,7 @@ class TransactionController extends Controller
     {
         Transaction::withTrashed()->find($id)->restore();
         TransactionDetail::where('transaction_id', $id)->withTrashed()->restore();
-        toastr()->success('restored data successfully');
+        toastr()->success('Mengembalikan Data Berhasil');
         return redirect()->route('transactions.restored');
     }
 }
