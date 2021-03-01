@@ -60,6 +60,7 @@ class TransactionController extends Controller
     {
         $data = $request->all();
 
+        $data['date'] = Carbon::parse($request->date)->format('Y-m-d H:i:s');
         $data['photo'] = $request->file('photo')->store(
             'assets/product/bukti',
             'public'

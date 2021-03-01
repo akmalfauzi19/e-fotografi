@@ -230,7 +230,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="aa-checkout-single-bill">
-                                                                        <input type="datetime-local" name="date"
+                                                                        <input type="text" name="date"
                                                                             class="@error('date') is-invalid @enderror"
                                                                             placeholder=" Pilih Tanggal">
                                                                         <small>*Pilih Tanggal Sesi Foto H+2</small>
@@ -369,6 +369,27 @@
                 reader.readAsDataURL(file);
             }
         }
+
+    </script>
+@endpush
+
+@push('after-script')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script>
+        $(function() {
+            $('input[name="date"]').daterangepicker({
+                singleDatePicker: true,
+                timePicker: true,
+                timePicker24Hour: true,
+                timePickerIncrement: 60,
+                locale: {
+                    format: 'YYYY/MM/DD HH:mm:ss'
+                }
+            });
+        });
 
     </script>
 @endpush

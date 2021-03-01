@@ -22,7 +22,9 @@
     <tr>
         <th>Down Payment</th>
         <td>
-            <img style="width: 50%" src="{{ url('storage/' . $item->photo) }}" alt="Bukti-{{ $item->uuid }}">
+            <a href="{{ url('storage/' . $item->photo) }}" target="_blank">
+                <img style="width: 50%" src="{{ url('storage/' . $item->photo) }}" alt="Bukti-{{ $item->uuid }}">
+            </a>
         </td>
     </tr>
     <tr>

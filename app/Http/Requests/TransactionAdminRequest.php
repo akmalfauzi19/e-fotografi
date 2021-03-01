@@ -25,6 +25,7 @@ class TransactionAdminRequest extends FormRequest
     public function rules()
     {
         $id = $this->route('transaction');
+
         return [
             'name' => 'required|max:255',
             'number' => 'required',
