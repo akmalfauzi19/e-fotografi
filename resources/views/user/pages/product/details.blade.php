@@ -37,7 +37,8 @@
                                                         @if ($item->is_default == 1)
                                                             <a data-lens-image="{{ url($item->photo) }}"
                                                                 class="simpleLens-lens-image">
-                                                                <img src="{{ url($item->photo) }}" class="simpleLens-big-image"
+                                                                <img src="{{ url($item->photo) }}"
+                                                                    class="simpleLens-big-image"
                                                                     style="width: 100%; height: 250px">
                                                             </a>
                                                         @endif
@@ -57,8 +58,6 @@
 
                                                 @endforeach
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -73,9 +72,15 @@
 
                                         </div>
                                         <div class="aa-prod-quantity">
-                                            <p class="aa-prod-category">
-                                                Category: <a href="#">{{ $item->product->type }}</a>
-                                            </p>
+                                            <form action="{{ route('user.search') }}">
+                                                @csrf
+                                                <input type="text" name="cari" value="{{ $item->product->type }}" hidden>
+                                                <p class="aa-prod-category">
+                                                    Category: <button class="btn btn-link" type="submit">
+                                                        {{ $item->product->type }}</button>
+                                                </p>
+
+                                            </form>
                                         </div>
                                         @if (Route::has('login'))
                                             @auth
@@ -113,8 +118,8 @@
                                                 <li>
                                                     <div class="media">
                                                         <div class="media-left">
-                                                            <img class="media-object" src="{{ url('user/img/user-male.png') }}"
-                                                                alt="girl image">
+                                                            <img class="media-object"
+                                                                src="{{ url('user/img/user-male.png') }}" alt="girl image">
                                                         </div>
                                                         <div class="media-body">
                                                             <h4 class="media-heading">

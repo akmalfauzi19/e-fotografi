@@ -12,8 +12,8 @@ use App\Http\Requests\TransactionRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 use App\Mail\SendMailNotif;
-
 
 
 class TransactionController extends Controller
@@ -59,6 +59,12 @@ class TransactionController extends Controller
     public function store(TransactionRequest $request)
     {
         $data = $request->all();
+
+        $data['photo'] = $request->file('photo')->store(
+            'assets/product/bukti',
+            'public'
+        );
+
         $transaction = Transaction::create($data);
 
         Mail::to('aristofotografi7@gmail.com')->send(new SendMailNotif($transaction));
@@ -69,7 +75,8 @@ class TransactionController extends Controller
         TransactionDetail::create($data1);
         $email = Auth::user()->email;
 
-        return redirect()->route('user.status.login', $email)->with('success', 'Pesanan berhasil dan Tunggu Notifikasi Email Dari Kami');
+        return redirect()->route('user.status.login', $email)
+            ->with('success', 'Pesanan berhasil dan Tunggu Notifikasi Email Dari Kami');
     }
 
     /**

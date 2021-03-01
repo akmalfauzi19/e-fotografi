@@ -20,6 +20,12 @@
         <td>{{ $item->transaction_status }}</td>
     </tr>
     <tr>
+        <th>Down Payment</th>
+        <td>
+            <img style="width: 50%" src="{{ url('storage/' . $item->photo) }}" alt="Bukti-{{ $item->uuid }}">
+        </td>
+    </tr>
+    <tr>
         <th>Jenis Sesi Foto yang Dipilih</th>
         <td>
             <table class="tabble table-bordered w-100">

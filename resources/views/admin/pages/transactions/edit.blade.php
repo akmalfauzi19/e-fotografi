@@ -43,8 +43,9 @@
                                 <label for="date" class=" form-control-label">Tanggal</label>
                             </div>
                             <div class="col-12 col-md-10">
-                                <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"
-                                    value="{{ old('pdate') ? old('pdate') : $item->date }}">
+                                <input type="datetime-local" name="date"
+                                    class="form-control @error('date') is-invalid @enderror"
+                                    value="{{ old('date') ? old('date') : $item->date }}">
                                 @error('date')
                                     <small class="form-text text-muted">{{ $message }}</small>
                                 @enderror

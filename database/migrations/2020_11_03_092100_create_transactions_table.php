@@ -21,8 +21,9 @@ class CreateTransactionsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('address');
-            $table->date('date');
+            $table->datetime('date');
             $table->string('number');
+            $table->string('photo');
             $table->integer('transaction_price');
             $table->string('transaction_status');
 

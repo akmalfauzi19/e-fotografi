@@ -2,6 +2,7 @@
 
 @section('contentuser')
 
+
     <!-- Start slider -->
     <section id="aa-slider">
         <div class="aa-slider-area">
@@ -9,66 +10,16 @@
                 <div class="seq-screen">
                     <ul class="seq-canvas">
                         <!-- single slide item -->
-                        <li>
-                            <div class="seq-model">
-                                <img data-seq src="{{ asset('user/img/slider-1.png') }}" alt="Men slide img" />
-                            </div>
-                            <div class="seq-title">
-                                <h2 data-seq>Grup </h2>
-                                <p data-seq>Sahabat bukan tentang siapa yang telah lama kamu kenal, tapi tentang siapa yang
-                                    menghampiri hidupmu dan tidak pernah meninggalkanmu dalam situasi dan kondisi seburuk
-                                    apa pun
-                                </p>
-                            </div>
-                        </li>
-                        <!-- single slide item -->
-                        <li>
-                            <div class="seq-model">
-                                <img data-seq src="{{ asset('user/img/slider-2.png') }}" alt="Wristwatch slide img" />
-                            </div>
-                            <div class="seq-title">
-                                <h2 data-seq>Bayi</h2>
-                                <p data-seq>Anak-anak bukanlah buku mewarnai. Anda tak dapat mewarnai mereka sesuka hati
-                                    Anda
-                                </p>
-                            </div>
-                        </li>
-                        <!-- single slide item -->
-                        <li>
-                            <div class="seq-model">
-                                <img data-seq src="{{ asset('user/img/slider-3.png') }}" alt="Women Jeans slide img" />
-                            </div>
-                            <div class="seq-title">
-                                <h2 data-seq>Keluarga</h2>
-                                <p data-seq>Bisa membuat keluarga bahagia adalah salah satu momen paling membahagiakan dalam
-                                    hidup ini.
-                                </p>
-                            </div>
-                        </li>
-                        <!-- single slide item -->
-                        <li>
-                            <div class="seq-model">
-                                <img data-seq src="{{ asset('user/img/slider-4.png') }}" alt="Shoes slide img" />
-                            </div>
-                            <div class="seq-title">
-                                <h2 data-seq>Prewedding Outdoor</h2>
-                                <p data-seq>Banyak orang yang mengatakan cinta itu buta dan banyak orang yang rela melakukan
-                                    hal apa pun untuk mendapatkan seseorang yang dicintainya.
-                                </p>
-                            </div>
-                        </li>
-                        <!-- single slide item -->
-                        <li>
-                            <div class="seq-model">
-                                <img data-seq src="{{ asset('user/img/slider-5.png') }}" alt="Male Female slide img" />
-                            </div>
-                            <div class="seq-title">
-                                <h2 data-seq>Produk olshop</h2>
-                                <p data-seq>Jika ingin menjadi pengusaha sukses tetapi tidak punya modal uang, gunakan saja
-                                    modal dengkulmu untuk menjadi pengusaha sukses
-                                </p>
-                            </div>
-                        </li>
+                        @foreach ($slider as $item)
+                            <li>
+                                <div class="seq-model d-flex justify-content-center w-100 h-100">
+                                    <img data-seq src="{{ url($item->photo) }}" alt="Men slide img" />
+                                </div>
+                                <div class="seq-title">
+                                    <h2 data-seq>{{ $item->product->name }}</h2>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <!-- slider navigation btn -->

@@ -1,7 +1,7 @@
 {{-- rekomendasi --}}
 <div class="row">
     <div class="col-md-6 col-sm-6 col-xs-12">
-        <h3 class="detail-price">Rekomendasi</h3>
+        <h3 class="detail-price">Jenis Foto Lainnya</h3>
     </div>
 </div>
 <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel" data-type="multi">

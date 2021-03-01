@@ -18,10 +18,12 @@ class DashboardController extends Controller
         $items = ProductGallery::with('product')->where('is_default', 1)->paginate(9);
         $menu = ProductGallery::with('product')->get();
         $user = User::inRandomOrder()->limit(5)->get();
+        $slider = ProductGallery::with('product')->where('is_default', 1)->inRandomOrder()->limit(5)->get();
         return view('user.pages.dashboard')->with([
             'items' => $items,
             'menu'  => $menu,
-            'user' => $user
+            'user' => $user,
+            'slider' => $slider
         ]);
     }
 
@@ -71,7 +73,6 @@ class DashboardController extends Controller
                 'items' => $items,
                 'menu' => $menu
             ]);
-        // return view('user.pages.transactions.cekstatus');
     }
 
     public function Search(Request $request)
